@@ -14,20 +14,20 @@ Once a developer submits the form to create their profile, fetch their data from
 A Developer Profile should look like this at the backend:
 ```
 {
-	"id": "gcnit",
+	"id": "ayush-ai",
 	"avatar_url": "https://avatars.githubusercontent.com/u/4833751?v=4",
-	"name": "Gaurav Chandak",
-	"company": "workat.tech",
-	"blog": "https://workat.tech",
+	"name": "Ayush",
+	"company": "cosaimosh",
+	"blog": "https://techaway.com",
 	"location": "Bangalore, India",
 	"email": null,
-	"bio": "Building workat.tech;\r\nPreviously Software Engineer at @Flipkart, @microsoft and @tracxn",
-	"github_id": "gcnit",
-	"linkedin_id": "gcnit",
-	"codechef_id": "gc_nit",
-	"hackerrank_id": "gcnit",
-	"twitter_id": "gc_nit",
-	"medium_id": "gc_nit",
+	"bio": "Building workat.tech;\r\nPreviously Software Engineer at @Flipkart, @microsoft",
+	"github_id": "ayush-ai",
+	"linkedin_id": "Ayush",
+	"codechef_id": "null",
+	"hackerrank_id": "ayush",
+	"twitter_id": "supermanayush",
+	"medium_id": "null",
 	"repos": [{
 		"name": "awesome-learn-to-code",
 		"html_url": "https://github.com/gcnit/awesome-learn-to-code",
@@ -36,3 +36,14 @@ A Developer Profile should look like this at the backend:
 	}]
 }
 ```
+
+#### Tech Stack
+- You can use any tech stack of your choice.
+
+##### What to include in proposals?
+Apart from your details and your experience. You should include the following in your proposal:-
+
+- Your understanding about the project idea.
+- List of ideas you want to implement and a brief description of your approach.
+- Any ideas you want to suggest/add.
+- mockups and wireframe for the UI of the app.
