@@ -38,7 +38,9 @@ A Developer Profile should look like this at the backend:
 ```
 
 #### Tech Stack
-- You can use any tech stack of your choice.
+
+- Frontend - HTML, CSS, JavaScript
+- Backend - php/Node
 
 ##### What to include in proposals?
 Apart from your details and your experience. You should include the following in your proposal:-
