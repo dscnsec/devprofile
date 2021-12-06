@@ -44,8 +44,8 @@ A Developer Profile should look like this at the backend:
 
 #### Possible Mentors 
 
-- Procheta Bhattacharya 
-- Tanuka Mondal
+- Procheta Bhattacharya - [Mail](bhattacharyya.procheta1999@gmail.com) [LinkedIn](https://www.linkedin.com/in/procheta-bhattacharyya-18890818b)
+- Tanuka Mondal - [LinkedIn](https://www.linkedin.com/in/tanuka-mondal-923051199/)
 - Sajal Kumar
 
 For any queries, join [Whatsapp group](https://chat.whatsapp.com/H5zx8sAa73D65aKUcqxFyt).
