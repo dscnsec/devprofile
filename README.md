@@ -42,6 +42,14 @@ A Developer Profile should look like this at the backend:
 - Frontend - HTML, CSS, JavaScript
 - Backend - php/Node
 
+#### Possible Mentors 
+
+- Procheta Bhattacharya 
+- Suvadeep Maity
+- Tanuka Mondal
+
+For any queries, join [Whatsapp group](https://chat.whatsapp.com/H5zx8sAa73D65aKUcqxFyt).
+
 ##### What to include in proposals?
 Apart from your details and your experience. You should include the following in your proposal:-
 
