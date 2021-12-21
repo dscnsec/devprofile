@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Devprofile
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Create a platform where anyone can create their developer profile/porfolio.
 
-## Available Scripts
+We will be starting with an MVP where we take certain profile ids for each developer and create a basic profile for them including the following information:
 
-In the project directory, you can run:
+- Profile URLs (github, linkedin, codechef, hackerrank, twitter, medium)
+- Profile Information from Github API (name, bio, avatar_url, company, blog, location, email)
+- Repo List (name, description, updated_at, html_url)
+- You need to use the GitHub ID of the developer as the Unique ID to denote that developer on your website. Apart from Github, adding any other profile should be optional for the   developer while creating their profile.
 
-### `yarn start`
+Once a developer submits the form to create their profile, fetch their data from Github including profile and repo information and include it in the user information.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A Developer Profile should look like this at the backend:
+```
+{
+	"id": "ayush-ai",
+	"avatar_url": "https://avatars.githubusercontent.com/u/4833751?v=4",
+	"name": "Ayush",
+	"company": "cosaimosh",
+	"blog": "https://techaway.com",
+	"location": "Bangalore, India",
+	"email": null,
+	"bio": "Building workat.tech;\r\nPreviously Software Engineer at @Flipkart, @microsoft",
+	"github_id": "ayush-ai",
+	"linkedin_id": "Ayush",
+	"codechef_id": "null",
+	"hackerrank_id": "ayush",
+	"twitter_id": "supermanayush",
+	"medium_id": "null",
+	"repos": [{
+		"name": "awesome-learn-to-code",
+		"html_url": "https://github.com/gcnit/awesome-learn-to-code",
+		"description": "A list of awesome resources for learning to code",
+		"updated_at": "2020-08-12T18:21:53Z"
+	}]
+}
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Tech Stack
 
-### `yarn test`
+- Frontend - HTML, CSS, JavaScript
+- Backend - php/Node
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Possible Mentors 
 
-### `yarn build`
+- Procheta Bhattacharyya - [Mail](mailto:bhattacharyya.procheta1999@gmail.com), [LinkedIn](https://www.linkedin.com/in/procheta-bhattacharyya-18890818b)
+- Tanuka Mondal - [LinkedIn](https://www.linkedin.com/in/tanuka-mondal-923051199/)
+- Sajal Kumar
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For any queries, join [Whatsapp group](https://chat.whatsapp.com/H5zx8sAa73D65aKUcqxFyt).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##### What to include in proposals?
+Apart from your details and your experience. You should include the following in your proposal:-
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Your understanding about the project idea.
+- List of ideas you want to implement and a brief description of your approach.
+- Any ideas you want to suggest/add.
+- mockups and wireframe for the UI of the app.
