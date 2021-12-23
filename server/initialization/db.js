@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 
-const DATABASE_CONNECTION_STRING = process.env.DATABASE_CONNECTION_STRING
-
-const initializeDB = () => {
+const initializeDB = (DATABASE_CONNECTION_STRING) => {
+    
     mongoose.connect(DATABASE_CONNECTION_STRING, 
         { 
             useNewUrlParser: true,
