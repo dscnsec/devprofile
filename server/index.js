@@ -1,5 +1,6 @@
 const express = require('express')
 const initializeRoutes = require('./initialization/routes')
+const initializeDB = require('./initialization/db')
 const cors = require('cors')
 const authMiddleware = require('./middleware/auth')
 
@@ -12,10 +13,13 @@ const app = express()
 // Initialize the middlewares
 app.use(cors())
 app.use(express.json())
-app.use('/', authMiddleware)
+// app.use('/', authMiddleware)
 
 // Initialize the routes
 initializeRoutes(app)
+
+// Initialize the db
+initializeDB()
 
 // Start the server
 app.listen(PORT, () => {
