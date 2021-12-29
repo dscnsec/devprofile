@@ -1,8 +1,9 @@
 const { Profile, validate } = require('../../models/profile')
+const logger = require('../../initialization/logging')
 
-const createProfile = async (req, res) => {
+const createProfile = async (req, res, next) => {
 
-    console.log(req.body)
+    logger.info(req.body)
 
     const { error } = validate(req.body)
 
@@ -26,7 +27,7 @@ const createProfile = async (req, res) => {
         .then((profile) => res.send(profile._id))
         .catch(err => {
             res.status(400).send('failed to save profile')
-            console.log(err)
+            next(err)
         })
 }
 
