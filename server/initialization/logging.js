@@ -1,6 +1,6 @@
 const winston = require('winston')
 require('winston-mongodb')
-const { DATABASE_CONNECTION_STRING } = require('../config/index')
+const { NODE_ENV, DATABASE_CONNECTION_STRING } = require('../config/index')
 
 const initializeLogger = (DATABASE_CONNECTION_STRING) => {
 
@@ -25,7 +25,7 @@ const initializeLogger = (DATABASE_CONNECTION_STRING) => {
         ]
     })
 
-    if(process.env.NODE_ENV !== 'production') {
+    if(NODE_ENV !== 'production') {
         logger.add(
             new winston.transports.Console({
                 format: winston.format.simple()
