@@ -68,28 +68,28 @@ h1 span{
 }
 
 .ant-btn-primary, .ant-btn-gray-1{
-    margin-right: 10px !important;
-    border-radius: 3.5px !important;
+    margin-right: 10px ;
+    border-radius: 3.5px ;
     font-size: 20px;
     font-weight: var(--thin-font-weight);
-    width: 130px !important;
-    height :50px !important;
+    width: 130px ;
+    height :50px;
 }
 
 .ant-btn-primary{
-    background: var(--secondary-color) !important;
-    border-color:var(--secondary-color) !important;
+    background: var(--secondary-color);
+    border-color:var(--secondary-color);
 }
 
 .ant-btn-primary:focus{
-    background-color: var(--bg-purple-100) !important;
-    border-color: var(--bg-purple-100) !important;
+    background-color: var(--bg-purple-100) ;
+    border-color: var(--bg-purple-100);
     border-radius: 3.5px;
 }
 
 .ant-btn:hover{
-    color: var(--bg-purple-50) !important;
-    border-color: var(--bg-purple-50) !important;
+    color: var(--bg-purple-50) ;
+    border-color: var(--bg-purple-50) ;
     background-color: var(----bg-purple-50);
 } 
 
@@ -101,6 +101,30 @@ h1 span{
 
 .site-collapse-custom-collapse{
     background-color: var(--bg-purple-5);
+}
+
+@media  screen and (max-width: 768px) {
+    .head-image{
+        height: 380px;
+    }
+
+    h1{
+        font-size: 35px;
+    }
+
+    .ant-form-item-label label{
+        font-size: 20px;
+    }
+
+    .ant-input{
+        height: 27px;
+    }
+
+    .ant-btn-primary, .ant-btn-gray-1{
+        height: 35px;
+        font-size: 15px;
+    }
+
 }
 
 @media  screen and (max-width: 450px) {

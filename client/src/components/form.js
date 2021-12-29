@@ -4,7 +4,9 @@ import { Form, Input, Button, notification} from 'antd';
 import image from "../assets/Images/5143311.png";
 import "../assets/css/form.css";
 import { Collapse } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, SketchOutlined } from '@ant-design/icons';
+import { Space } from 'antd';
+import { PoweroffOutlined } from '@ant-design/icons';
 
 const { Panel } = Collapse;
 
@@ -22,6 +24,7 @@ const openNotification = () => {
 
 /* Form module */
 const FormLayoutDemo = () => {
+const [isButtonLoading, setIsButtonLoading] = React.useState(false);
   const [form] = Form.useForm();
   const [formLayout] = useState('vertical');
   
@@ -108,7 +111,7 @@ const FormLayoutDemo = () => {
         </Form.Item>
         </Form>
         <Form.Item {...buttonItemLayout}>
-            <Button type="primary" onClick={openNotification}>Save</Button>
+        <Button type="primary" >Save</Button>
             <Button type="gray-1">Cancel</Button>
         </Form.Item>
         </div> 
