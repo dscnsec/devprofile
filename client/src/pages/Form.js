@@ -2,7 +2,7 @@ import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
 import FormLayoutDemo from "../components/Form";
 
-function App() {
+function Form() {
   return (
     <div>
         <Row justify="center">
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default Form;

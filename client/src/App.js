@@ -1,6 +1,7 @@
 import './App.css';
 import logo from './logo.svg';
-import Login from './components/Login'
+import Login from './pages/Login'
+import Form from './pages/Form'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Login />} />
+          <Route exact path="/form" element={<Form />} />
         </Routes>
       </BrowserRouter>
     </div>
