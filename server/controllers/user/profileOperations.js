@@ -3,32 +3,46 @@ const logger = require('../../initialization/logging')
 
 const createProfile = async (req, res, next) => {
 
-    logger.info(req.body)
 
-    const { error } = validate(req.body)
+    Profile
+        .findOne({id: req.body.id})
+        .then(user => {
+            if(user) {
+                return res.status(400).send('User already exists')
+            } else {
+                logger.info(req.body)
 
-    if (error) return res.status(400).send(error.details[0].message)
+                const { error } = validate(req.body)
 
-    let profile = new Profile({
-        id: req.body.id,
-        avatar_url: req.body.avatar_url,
-        name: req.body.name,
-        company: req.body.company,
-        blog: req.body.blog,
-        location: req.body.location,
-        email: req.body.email,
-        bio: req.body.bio,
-        externalProfileLinks: req.body.externalProfileLinks,
-        repos: req.body.repos,
-    })
+                if (error) return res.status(400).send(error.details[0].message)
 
-    profile
-        .save()
-        .then((profile) => res.send(profile._id))
+                let profile = new Profile({
+                    id: req.body.id,
+                    avatar_url: req.body.avatar_url,
+                    name: req.body.name,
+                    company: req.body.company,
+                    blog: req.body.blog,
+                    location: req.body.location,
+                    email: req.body.email,
+                    bio: req.body.bio,
+                    externalProfileLinks: req.body.externalProfileLinks,
+                    repos: req.body.repos,
+                })
+
+                profile
+                    .save()
+                    .then((profile) => res.send(profile._id))
+                    .catch(err => {
+                        res.status(400).send('failed to save profile')
+                        next(err)
+                    })
+            }
+        })
         .catch(err => {
-            res.status(400).send('failed to save profile')
             next(err)
         })
+
+    
 }
 
 const editProfile = async (req, res) => {
