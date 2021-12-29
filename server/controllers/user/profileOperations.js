@@ -23,13 +23,50 @@ const createProfile = async (req, res) => {
 
     profile
         .save()
-        .then((profile) => res.send(profile))
+        .then((profile) => res.send(profile._id))
         .catch(err => {
             res.status(400).send('failed to save profile')
             console.log(err)
         })
 }
 
+const editProfile = async (req, res) => {
+    console.log(`editing profile`)
+    
+    // TODO: check if the user is the owner of the profile sent in the request
+
+    // TODO: validate the profile sent in the request
+    // const { error } = validate(req.body)
+    // if (error) return res.status(400).send(error.details[0].message)
+    
+    // TODO: make the updated values object
+    const editedValues = {}
+
+    console.log(req.params.id)
+
+    for (key in req.body) {
+
+        if (key === 'externalProfileLinks') {
+            console.log(key, '-->')
+            console.log(req.body[key], '<--')
+
+            // for (x of req.body[key]) {
+            //     console.log('0-0---',x)
+            // }
+
+        } else {
+            console.log(key, req.body[key])
+        }
+    }
+
+    // TODO: update the profile in the DB
+    // Profile
+    //     .findByIdAndUpdate(req.params.id, {
+    //         ...editedValues
+    //     })
+}
+
 module.exports = {
-    createProfile
+    createProfile,
+    editProfile
 }
