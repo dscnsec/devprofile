@@ -1,5 +1,4 @@
 import './App.css';
-import logo from './logo.svg';
 import Login from './pages/Login'
 import Form from './pages/Form'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'

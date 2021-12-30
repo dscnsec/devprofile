@@ -5,8 +5,7 @@ import image from "../assets/Images/5143311.png";
 import "../assets/css/form.css";
 import { Collapse } from 'antd';
 import { PlusOutlined, SketchOutlined } from '@ant-design/icons';
-import { Space } from 'antd';
-import { PoweroffOutlined } from '@ant-design/icons';
+
 
 const { Panel } = Collapse;
 
