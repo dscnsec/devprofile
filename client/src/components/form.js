@@ -1,4 +1,4 @@
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 import React, { useState } from 'react';
 import { Form, Input, Button, notification} from 'antd';
 import image from "../assets/Images/5143311.png";
