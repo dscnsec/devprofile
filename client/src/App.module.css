@@ -37,12 +37,16 @@ body{
     align-items: center;
     flex-direction: row;
     width: 100%;
-    padding: 4% 6%;
-    margin-top: 40px;   
+    height: 100vh;
+    /* padding: 4% 6%; */
+    /* margin-top: 40px;    */
 }
  .left{
 width: 50%;
 margin-left: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
 
 }
 .left > img{
@@ -56,6 +60,7 @@ width: 50%;
 margin-left: 30px;
 /* margin-top: 80px; */
 }
+
 .text{
     display: flex;
     flex-direction: column; 
@@ -103,7 +108,7 @@ button > img{
     justify-content: flex-start;
     border-radius: 5px;
     background-color: var(--grey);
-    width: 100px;
+    width: 8.3rem;
     margin-bottom: 20px;
     /* transform: translate(-90%, -50%); */
 }

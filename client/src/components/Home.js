@@ -13,7 +13,7 @@ function GitHubUser({ login }) {
       const octokit = new Octokit({ auth: accessToken})
       setLoading(true);
       const { data } = await octokit.rest.users.getAuthenticated();
-    // console.log("Hello, %s", login);
+    console.log("Hello, %s", login);
       console.log(data)
       return fetch(`https://api.github.com/users/${login}`,{
         method: "GET",
