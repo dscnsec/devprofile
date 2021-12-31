@@ -31,7 +31,7 @@ export const signInWithGitHub = async (onSuccessfulLogin) => {
                 localStorage.setItem('dev-profile-id-token', idToken)
 
                 // Call the callback
-                onSuccessfulLogin()
+                onSuccessfulLogin(token)
             }
         }, (err) => { console.log(err) })
 }

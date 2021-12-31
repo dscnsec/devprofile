@@ -23,7 +23,8 @@
 	padding: 0;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
-overflow: hidden;}
+/* overflow: hidden;} */
+}
 body{
     background-color: var(--bg);
     color: var(--text-color);
@@ -36,12 +37,16 @@ body{
     align-items: center;
     flex-direction: row;
     width: 100%;
-    padding: 4% 6%;
-    margin-top: 40px;   
+    height: 100vh;
+    /* padding: 4% 6%; */
+    /* margin-top: 40px;    */
 }
  .left{
 width: 50%;
 margin-left: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
 
 }
 .left > img{
@@ -55,6 +60,7 @@ width: 50%;
 margin-left: 30px;
 /* margin-top: 80px; */
 }
+
 .text{
     display: flex;
     flex-direction: column; 
@@ -90,26 +96,29 @@ button > img{
 }
 .orLine{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     flex-direction: row; 
     margin-bottom: 50px;
     position: relative; 
 }
 .line{
-    height: 10px;
+    height: 4px;
+    display: flex;
+    justify-content: flex-start;
     border-radius: 5px;
     background-color: var(--grey);
-    width: 100px;
+    width: 8.3rem;
     margin-bottom: 20px;
-    transform: translate(-90%, -50%);
+    /* transform: translate(-90%, -50%); */
 }
 .orText{
-    margin-right: 80px;
-color: var(--dark-grey);
-position: relative;
-right: 50px;
-
+    margin-right: 20px;
+    margin-left: 20px;
+    color: var(--dark-grey);
+    /* position: relative;
+    right: 50px; */
+    text-align: center;
 
 }
 /* .orText::before {

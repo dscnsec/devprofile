@@ -2,14 +2,51 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import classes from '../App.module.css';
 import { signInWithGitHub as GithubSignIn } from '../utilities/auth'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { editDetails } from '../redux/userDetailsSlice'
+import { Octokit } from 'octokit'
 
 const Login = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  const onSuccessfulLogin = () => {
-      // Navigate to the test page
-      navigate('/test')
+  const userDetails = useSelector(state => state.userDetails)
+  
+  const onSuccessfulLogin = async (accessToken) => {
+
+      // octokit initialization with access key
+      const octokit = new Octokit({ auth: accessToken})
+      
+      // user details from github
+      const { data } = await octokit.rest.users.getAuthenticated();
+      console.log(data)
+      
+      console.log(userDetails)
+      const newData = {}
+      // id
+      data.login && (newData.id = data.login)
+      // avatar_url
+      data.avatar_url && (newData.avatar_url = data.avatar_url)
+      // name
+      data.name && (newData.name = data.name)
+      // company
+      data.company && (newData.company = data.company)
+      // blog
+      data.blog && (newData.blog = data.blog)
+      // location
+      data.location && (newData.location = data.location)
+      // email
+      data.email && (newData.email = data.email)
+      // bio
+      data.bio && (newData.bio = data.bio)
+      // externalProfileLinks
+      // repos
+
+      dispatch(editDetails(newData))
+      // console.log(userDetails)
+
+      navigate('/form')
+
   }
 
   const signInWithGitHub = () => {
