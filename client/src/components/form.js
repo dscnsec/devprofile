@@ -16,7 +16,7 @@ const openNotification = () => {
     message: 'Notification',
     description:
       'Data has been saved!!!',
-    duration: 0,
+    duration: 3000,
   };
   notification.open(args);
 };
@@ -26,6 +26,7 @@ const FormLayoutDemo = () => {
 const [isButtonLoading, setIsButtonLoading] = React.useState(false);
   const [form] = Form.useForm();
   const [formLayout] = useState('vertical');
+  const [loading, setLoading] = useState(false);
   
   const formItemLayout =
     formLayout === 'vertical'
@@ -48,7 +49,16 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
         }
       : null;
 
+    /*for loading in button */
+    const onClick = () => {
+                setLoading(true);
+            
+                setTimeout(() => {
+                  setLoading(false);
+                }, 3000);
+              };
 
+              
   return (
     <section>
         <div className="info-full">
@@ -110,7 +120,7 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
         </Form.Item>
         </Form>
         <Form.Item {...buttonItemLayout}>
-        <Button type="primary" >Save</Button>
+            <Button type="primary" loading={loading} onClick={onClick, openNotification}>Save</Button>
             <Button type="gray-1">Cancel</Button>
         </Form.Item>
         </div> 
@@ -149,7 +159,7 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
             </Panel>
         </Collapse>
         <Form.Item {...buttonItemLayout}>
-            <Button type="primary" onClick={openNotification} >Save</Button>
+            <Button type="primary" loading={loading} onClick={onClick, openNotification}>Save</Button>
             <Button type="gray-1">Cancel</Button>
         </Form.Item>
         </div>
