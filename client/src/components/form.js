@@ -4,7 +4,7 @@ import { Form, Input, Button, notification} from 'antd';
 import image from "../assets/Images/5143311.png";
 import "../assets/css/form.css";
 import { Collapse } from 'antd';
-import { PlusOutlined, SketchOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 
 
 const { Panel } = Collapse;
@@ -23,7 +23,6 @@ const openNotification = () => {
 
 /* Form module */
 const FormLayoutDemo = () => {
-const [isButtonLoading, setIsButtonLoading] = React.useState(false);
   const [form] = Form.useForm();
   const [formLayout] = useState('vertical');
   const [loading, setLoading] = useState(false);
@@ -50,7 +49,7 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
       : null;
 
     /*for loading in button */
-    const onClick = () => {
+    const Loading = () => {
                 setLoading(true);
             
                 setTimeout(() => {
@@ -120,7 +119,10 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
         </Form.Item>
         </Form>
         <Form.Item {...buttonItemLayout}>
-            <Button type="primary" loading={loading} onClick={onClick, openNotification}>Save</Button>
+            <Button type="primary" loading={loading} onClick={() => {
+                Loading();
+                openNotification();
+            }}>Save</Button>
             <Button type="gray-1">Cancel</Button>
         </Form.Item>
         </div> 
@@ -159,7 +161,10 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
             </Panel>
         </Collapse>
         <Form.Item {...buttonItemLayout}>
-            <Button type="primary" loading={loading} onClick={onClick, openNotification}>Save</Button>
+            <Button type="primary" loading={loading} onClick={() => {
+            Loading();
+            openNotification();
+            }}>Save</Button>
             <Button type="gray-1">Cancel</Button>
         </Form.Item>
         </div>
@@ -169,4 +174,3 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
 
 export default FormLayoutDemo;
 
-//  loading={loadings[0]} onClick={() => this.enterLoading(0)} 
