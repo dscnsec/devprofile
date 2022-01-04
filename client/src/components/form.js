@@ -4,7 +4,7 @@ import { Form, Input, Button, notification} from 'antd';
 import image from "../assets/Images/5143311.png";
 import "../assets/css/form.css";
 import { Collapse } from 'antd';
-import { PlusOutlined, SketchOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 
 
 const { Panel } = Collapse;
@@ -16,16 +16,16 @@ const openNotification = () => {
     message: 'Notification',
     description:
       'Data has been saved!!!',
-    duration: 0,
+    duration: 3000,
   };
   notification.open(args);
 };
 
 /* Form module */
 const FormLayoutDemo = () => {
-const [isButtonLoading, setIsButtonLoading] = React.useState(false);
   const [form] = Form.useForm();
   const [formLayout] = useState('vertical');
+  const [loading, setLoading] = useState(false);
   
   const formItemLayout =
     formLayout === 'vertical'
@@ -48,7 +48,16 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
         }
       : null;
 
+    /*for loading in button */
+    const Loading = () => {
+                setLoading(true);
+            
+                setTimeout(() => {
+                  setLoading(false);
+                }, 3000);
+              };
 
+              
   return (
     <section>
         <div className="info-full">
@@ -110,7 +119,10 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
         </Form.Item>
         </Form>
         <Form.Item {...buttonItemLayout}>
-        <Button type="primary" >Save</Button>
+            <Button type="primary" loading={loading} onClick={() => {
+                Loading();
+                openNotification();
+            }}>Save</Button>
             <Button type="gray-1">Cancel</Button>
         </Form.Item>
         </div> 
@@ -149,7 +161,10 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
             </Panel>
         </Collapse>
         <Form.Item {...buttonItemLayout}>
-            <Button type="primary" onClick={openNotification} >Save</Button>
+            <Button type="primary" loading={loading} onClick={() => {
+            Loading();
+            openNotification();
+            }}>Save</Button>
             <Button type="gray-1">Cancel</Button>
         </Form.Item>
         </div>
@@ -159,4 +174,3 @@ const [isButtonLoading, setIsButtonLoading] = React.useState(false);
 
 export default FormLayoutDemo;
 
-//  loading={loadings[0]} onClick={() => this.enterLoading(0)} 
