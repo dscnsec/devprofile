@@ -2,7 +2,7 @@ const { Profile, validate } = require('../../models/profile')
 const logger = require('../../initialization/logging')
 
 const createProfile = async (req, res, next) => {
-
+console.log(req.body)
 
     Profile
         .findOne({id: req.body.id})
@@ -27,6 +27,8 @@ const createProfile = async (req, res, next) => {
                     bio: req.body.bio,
                     externalProfileLinks: req.body.externalProfileLinks,
                     repos: req.body.repos,
+                    college: req.body.college,
+                    portfolio: req.body.portfolio,
                 })
 
                 profile
