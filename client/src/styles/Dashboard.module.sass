@@ -12,13 +12,16 @@ a
     background: $bgClr
     color: $text
     min-height: 100vh
-    padding: 0 7vh
     overflow-x: hidden
+
+    main
+        padding: 0 7vh
+
 
     nav
         // background: $purpleDark
         color: $text
-        padding: 2rem 0
+        padding: 2rem 7vh
         display: flex
         width: 100%
 
@@ -30,6 +33,9 @@ a
             // background: #000
             margin: auto
             // font-weight: bold
+            
+            @media screen and (max-width: 700px)
+                width: 25%
 
         .search
             // background: pink
@@ -39,6 +45,10 @@ a
             display: flex
             align-items: center
             $searchBoxWidth: 70%
+
+            @media screen and (max-width: 700px)
+                width: 65%
+
 
             .searchBox
                 margin: auto
@@ -75,14 +85,17 @@ a
             align-items: center
             justify-content: flex-end
 
+            @media screen and (max-width: 700px)
+                width: 10%
+
             .logoutIcon
                 height: 2.1rem
                 width: 2.1rem
 
     footer
-        position: relative
-        left: -3.6vw
-        width: 105vw
+        // position: relative
+        // left: -4vw
+        // width: 105vw
         background: #000
         color: white
         text-align: center

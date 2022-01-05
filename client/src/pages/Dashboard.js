@@ -12,8 +12,10 @@ const Dashboard = () => {
         await fetch('https://jsonplaceholder.typicode.com/todos/1')
             .then(res => res.json())
             .then(data => {
+                setTimeout(() => {
+                    // setDataLoaded(true)
+                }, 3000)
                 console.log(data)
-                // setDataLoaded(true)
             })
             .catch(err => console.log(err))
 
