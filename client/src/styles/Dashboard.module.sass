@@ -14,16 +14,15 @@ a
     min-height: 100vh
     overflow-x: hidden
 
-    main
-        padding: 0 7vh
-
-
     nav
         // background: $purpleDark
         color: $text
-        padding: 2rem 7vh
+        padding: $pagePaddingY $pagePaddingXSm
         display: flex
         width: 100%
+
+        @media screen and (min-width: $sm)
+            padding: $pagePaddingY $pagePaddingXLg
 
         .logo
             width: 33.33%
@@ -91,12 +90,197 @@ a
             .logoutIcon
                 height: 2.1rem
                 width: 2.1rem
+    
+    main
 
-    footer
-        // position: relative
-        // left: -4vw
-        // width: 105vw
-        background: #000
-        color: white
+        h1
+            margin-top: 0
+
+        padding: 0 $pagePaddingXSm
+
+        @media screen and (min-width: $sm)
+            padding: 0 $pagePaddingXLg
+
+        .introduction
+            display: flex
+            justify-content: space-between
+            padding: 2rem 0
+            
+        .text
+            width: 60%
+            display: flex
+            flex-direction: column
+            align-items: flex-start
+            justify-content: center
+
+            .name
+                font-size: 6vw
+                margin-bottom: -0.3rem
+
+            .devName
+                display: flex
+                align-items: baseline
+                
+                h1
+                    font-size: 3.7vw
+                    color: $darkGrey
+                    margin-bottom: .7rem
+
+                .redirectionIcon
+                    margin-left: 0.5rem
+                    display: inline-block
+                    height: 0.9rem
+                    width: 0.9rem
+                    cursor: pointer
+
+            .bio
+                font-size: 2.4vw
+
+            .primaryIcons
+                margin-top: .7rem
+                display: flex
+                width: 100%
+                justify-content: space-between
+
+                .primaryIconBox
+                    display: flex
+                    align-items: center
+
+                    .primaryIcon
+                        width: .8rem
+                        margin-right: .3rem
+
+                    .primaryIconText
+                        font-size: .8rem
+                
+
+        .avatarBox
+            width: 35%
+            clip-path: circle(50% at 50% 50%)
+
+            .avatar
+                width: 100%
+
+    // repos
+
+    .repos
+        width: 100%
+        display: flex
+        flex-direction: column
+
+        .repoHeading
+            width: 100%
+            display: flex
+            justify-content: space-between
+            align-items: baseline
+            
+            .reposTitle
+                margin-bottom: 1rem
+                color: $darkGrey
+                font-size: 2rem
+                font-weight: 500
+
+        .reposGrid
+            width: 100%
+            // display:
+
+            .repoCard
+                padding: 1.2rem 1rem
+                background-color: $purpleLight
+                border-radius: 10px
+                box-shadow: $boxShadow
+
+                .repoName
+                    font-size: 1.8rem
+                    color: $purpleDark
+
+                .repoShortDesc
+                    font-size: .8rem
+                    font-weight: bold
+                    color: $purpleDark
+                        
+
+                .repoDescription
+                    margin-top: 0.7rem
+                    font-size: 0.8rem
+                    color: $darkGrey
+
+
+
+
+                // lang section
+
+    
+    .languages
+        width: 100%
+        display: flex
+        justify-content: space-between
+        align-items: baseline
+
+        .languagesTitle
+            margin-bottom: 1rem
+            color: $darkGrey
+            font-size: 2rem
+            font-weight: 500
+          
+
+    .knowMe
+        width: 100%
+        display: flex
+        justify-content: space-between
+        flex-direction: column
+        align-items: baseline
+        
+        
+        .knowMeTitle
+            margin-bottom: 1rem
+            color: $darkGrey
+            font-size: 2rem
+            font-weight: 500
+            display: flex
+            justify-content: center
+            
+        
+        .iconSet
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: space-between  
+            width: 82%
+             
+            & > div
+                display: flex
+
+                img
+                     
+                    width: 2.3rem 
+                    height: 2.3rem
+            
+            & > span
+                display: none
+
+                        
+// quote section
+
+.quote
+    margin-top: 1rem
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-bottom: 1rem
+
+    .goodQuote
+        font-size: 1rem
+        color: $darkGrey
         text-align: center
-        padding: 2rem 0
+
+footer
+    position: relative
+    left: -4vw
+    width: 105vw
+    background: #000
+    color: white
+    text-align: center
+    padding: 2rem 0
