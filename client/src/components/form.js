@@ -71,10 +71,10 @@ const FormLayoutDemo = () => {
             layout: formLayout,
         }}
         >
-        <Form.Item label="College">
+        <Form.Item label="college">
             <Input placeholder="college name" />
         </Form.Item>
-        <Form.Item label="Linkedin">
+        <Form.Item label="linkedin">
             <Input placeholder="linkedin profile link" />
         </Form.Item>
         <Form.Item label="portfolio">
