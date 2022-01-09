@@ -56,17 +56,7 @@ const FormLayoutDemo = () => {
         }
       : null;
 
-    /*for loading in button */
-    const Loading = () => {
 
-
-              };
-
-    const onChange = (newFields) => {
-      console.log(newFields);
-      // form.linkedin_value && (newJson.externalProfileLinks.linkedin_id=form.linkedin_value);
-    }
-    
     const onFinish = async (values) => {
       setLoading(true);
 
@@ -151,7 +141,7 @@ const FormLayoutDemo = () => {
   return (
     <section>
         <div className="info-full">
-        {/* <img className="head-image" src={image} alt="girl-image"></img> */}
+        <img className="head-image" src={image} alt="girl-image"></img> 
         <h1>personal <span>details</span></h1>
         <Form
         {...formItemLayout}
