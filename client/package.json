@@ -11,6 +11,7 @@
     "antd": "^4.17.3",
     "axios": "^0.24.0",
     "firebase": "^9.6.1",
+    "node-sass": "^7.0.1",
     "octokit": "^1.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -43,5 +44,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  }, 
+  "paths": {
+    "@pages/*": "./src/pages/*",
+    "@components/*": "./src/components/*",
+    "@styles/*": "./src/styles/*"
   }
 }

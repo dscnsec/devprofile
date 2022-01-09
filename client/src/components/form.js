@@ -154,12 +154,12 @@ const FormLayoutDemo = () => {
 
         onFinish={onFinish}
         >
-          <Form.Item label="College"
+          <Form.Item label="college"
             name="college"
           >
             <Input placeholder="college name" />
           </Form.Item>
-          <Form.Item label="Linkedin"
+          <Form.Item label="linkedin"
             name="linkedin"
           >
             <Input placeholder="linkedin profile link" />
