@@ -1,4 +1,4 @@
-// import 'antd/dist/antd.css';
+import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
 import FormLayoutDemo from "../components/form";
 
