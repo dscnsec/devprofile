@@ -17,52 +17,61 @@ const Login = () => {
 
       // octokit initialization with access key
       const octokit = new Octokit({ auth: accessToken})
-      
+        
       // user details from github
       const { data } = await octokit.rest.users.getAuthenticated();
-      console.log(data)
 
-      const { repos_url } = data
-      const { data: repos } = await axios.get(repos_url)
-      
-      console.log(repos)
-      const newData = {}
-      // id
-      data.login && (newData.id = data.login)
-      // avatar_url
-      data.avatar_url && (newData.avatar_url = data.avatar_url)
-      // name
-      data.name && (newData.name = data.name)
-      // company
-      data.company && (newData.company = data.company)
-      // blog
-      data.blog && (newData.blog = data.blog)
-      // location
-      data.location && (newData.location = data.location)
-      // email
-      data.email && (newData.email = data.email)
-      // bio
-      data.bio && (newData.bio = data.bio)
-      // externalProfileLinks will be saved from the form
-      // repos
-      newData.repos = []
-      // console.log(repos)
+      const { data: userInDB } = await axios.get(`http://localhost:8000/api/profile/find/${data.login}`)
+  
+      if(userInDB.found === true) {
+        
+        dispatch(editDetails(userInDB.data))
+        navigate('/dashboard')
 
-      for (const repo of repos) {
-        console.log(repo)
+      } else {
+        
+        const { repos_url } = data
+        const { data: repos } = await axios.get(repos_url)
+        
+        console.log(repos)
+        const newData = {}
+        // id
+        data.login && (newData.id = data.login)
+        // avatar_url
+        data.avatar_url && (newData.avatar_url = data.avatar_url)
+        // name
+        data.name && (newData.name = data.name)
+        // company
+        data.company && (newData.company = data.company)
+        // blog
+        data.blog && (newData.blog = data.blog)
+        // location
+        data.location && (newData.location = data.location)
+        // email
+        data.email && (newData.email = data.email)
+        // bio
+        data.bio && (newData.bio = data.bio)
+        // externalProfileLinks will be saved from the form
+        // repos
+        newData.repos = []
+        // console.log(repos)
 
-        const newRepo = {}
-        repo.name && (newRepo.name = repo.name)
-        repo.html_url && (newRepo.html_url = repo.html_url)
-        repo.description && (newRepo.description = repo.description)
-        repo.updated_at && (newRepo.updated_at = repo.updated_at)
+        for (const repo of repos) {
+          console.log(repo)
 
-        newData.repos.push(newRepo)
+          const newRepo = {}
+          repo.name && (newRepo.name = repo.name)
+          repo.html_url && (newRepo.html_url = repo.html_url)
+          repo.description && (newRepo.description = repo.description)
+          repo.updated_at && (newRepo.updated_at = repo.updated_at)
+
+          newData.repos.push(newRepo)
+        }
+
+        dispatch(editDetails(newData))
+
+        navigate('/form')
       }
-
-      dispatch(editDetails(newData))
-
-      navigate('/form')
 
   }
 
