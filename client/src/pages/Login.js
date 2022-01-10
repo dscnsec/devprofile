@@ -5,6 +5,7 @@ import { signInWithGitHub as GithubSignIn } from '../utilities/auth'
 import { useSelector, useDispatch } from 'react-redux'
 import { editDetails } from '../redux/userDetailsSlice'
 import { Octokit } from 'octokit'
+import axios from 'axios'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -20,8 +21,11 @@ const Login = () => {
       // user details from github
       const { data } = await octokit.rest.users.getAuthenticated();
       console.log(data)
+
+      const { repos_url } = data
+      const { data: repos } = await axios.get(repos_url)
       
-      console.log(userDetails)
+      console.log(repos)
       const newData = {}
       // id
       data.login && (newData.id = data.login)
@@ -39,8 +43,36 @@ const Login = () => {
       data.email && (newData.email = data.email)
       // bio
       data.bio && (newData.bio = data.bio)
-      // externalProfileLinks
+      // externalProfileLinks will be saved from the form
       // repos
+      newData.repos = []
+      // console.log(repos)
+
+      for (const repo of repos) {
+        console.log(repo)
+
+        const newRepo = {}
+        repo.name && (newRepo.name = repo.name)
+        repo.html_url && (newRepo.html_url = repo.html_url)
+        repo.description && (newRepo.description = repo.description)
+        repo.updated_at && (newRepo.updated_at = repo.updated_at)
+
+        newData.repos.push(newRepo)
+      }
+
+      // for (const [index, repo] of repos.data) {
+        
+      //   // const repo = repos.data[repoIndex]
+
+      //   console.log(repo)
+      //   const newRepo = {}
+      //   newRepo.name = repo.name
+      //   newRepo.html_url = repo.html_url
+      //   newRepo.description = repo.description
+      //   newRepo.updated_at = repo.updated_at
+
+      //   newData.repos.push(newRepo)
+      // }
 
       dispatch(editDetails(newData))
       // console.log(userDetails)
