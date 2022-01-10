@@ -8,16 +8,19 @@ const profileSchema = new mongoose.Schema({
     avatar_url:           { type: String },
     name:                 { type: String, required: true },
     company:              { type: String },
+    college:              { type: String },
     blog:                 { type: String },
     location:             { type: String },
     email:                { type: String },
     bio:                  { type: String },
+    portfolio:            { type: String },
  // externalProfileLinks: { type: externalProfileLinksSchema },
     externalProfileLinks: { type: {
                                 github_id:       { type: String },
                                 linkedin_id:     { type: String },
                                 codechef_id:     { type: String },
                                 hackerrank_id:   { type: String },
+                                leetcode_id:     {type: String},
                                 twitter_id:      { type: String },
                                 medium_id:       { type: String },
                             }},
@@ -36,12 +39,13 @@ const Profile = mongoose.model('Profile', profileSchema)
 const validate = (profile) => {
 
     const externalProfileLinks =  Joi.object().keys({
-        github_id:       Joi.string(),
-        linkedin_id:     Joi.string(),
-        codechef_id:     Joi.string(),
-        hackerrank_id:   Joi.string(),
-        twitter_id:      Joi.string(),
-        medium_id:       Joi.string(),
+        github_id:       Joi.string().uri(),
+        linkedin_id:     Joi.string().uri(),
+        codechef_id:     Joi.string().uri(),
+        hackerrank_id:   Joi.string().uri(),
+        leetcode_id:     Joi.string().uri(),
+        twitter_id:      Joi.string().uri(),
+        medium_id:       Joi.string().uri(),
     })
 
     const githubRepo =  Joi.object().keys({
@@ -62,6 +66,8 @@ const validate = (profile) => {
         location:               Joi.string(),
         email:                  Joi.string().email(),
         bio:                    Joi.string(),
+        college:                Joi.string(),
+        portfolio:              Joi.string(),
         externalProfileLinks:   externalProfileLinks,
         repos:                  githubRepos,
     })
