@@ -60,22 +60,7 @@ const Login = () => {
         newData.repos.push(newRepo)
       }
 
-      // for (const [index, repo] of repos.data) {
-        
-      //   // const repo = repos.data[repoIndex]
-
-      //   console.log(repo)
-      //   const newRepo = {}
-      //   newRepo.name = repo.name
-      //   newRepo.html_url = repo.html_url
-      //   newRepo.description = repo.description
-      //   newRepo.updated_at = repo.updated_at
-
-      //   newData.repos.push(newRepo)
-      // }
-
       dispatch(editDetails(newData))
-      // console.log(userDetails)
 
       navigate('/form')
 
