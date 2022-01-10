@@ -21,6 +21,7 @@
   "homepage": "https://github.com/dscnsec/devprofile#readme",
   "dependencies": {
     "concurrently": "^6.5.1",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "randomcolor": "^0.6.2"
   }
 }

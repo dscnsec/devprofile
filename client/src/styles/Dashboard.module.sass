@@ -33,7 +33,7 @@ a
             margin: auto
             // font-weight: bold
             
-            @media screen and (max-width: 700px)
+            @media screen and (min-width: 700px)
                 width: 25%
 
         .search
@@ -45,8 +45,11 @@ a
             align-items: center
             $searchBoxWidth: 70%
 
-            @media screen and (max-width: 700px)
+            @media screen and (min-width: 700px)
                 width: 65%
+
+            @media screen and ( min-width: $md )
+                 width: 75%
 
 
             .searchBox
@@ -60,6 +63,8 @@ a
                 border: none
                 font-size: 1.4rem
                 color: $darkGrey
+
+        
 
                 &:active
                     border: none
@@ -84,12 +89,13 @@ a
             align-items: center
             justify-content: flex-end
 
-            @media screen and (max-width: 700px)
+            @media screen and (min-width: 700px)
                 width: 10%
 
             .logoutIcon
                 height: 2.1rem
                 width: 2.1rem
+                cursor: pointer
     
     main
 
@@ -117,6 +123,9 @@ a
                 font-size: 6vw
                 margin-bottom: -0.3rem
 
+                @media screen and ( min-width: $md )
+                    font-size: 5vw
+
             .devName
                 display: flex
                 align-items: baseline
@@ -126,12 +135,20 @@ a
                     color: $darkGrey
                     margin-bottom: .7rem
 
+                    
+                    @media screen and ( min-width: $md )
+                        font-size: 2vw
+
                 .redirectionIcon
                     margin-left: 0.5rem
                     display: inline-block
                     height: 0.9rem
                     width: 0.9rem
                     cursor: pointer
+
+                    @media screen and ( min-width: $md )
+                        height: 1.1rem
+                        width: 1.1rem
 
             .bio
                 font-size: 2.4vw
@@ -142,6 +159,9 @@ a
                 width: 100%
                 justify-content: space-between
 
+                @media screen and ( min-width: $md )
+                    width: 28vw
+
                 .primaryIconBox
                     display: flex
                     align-items: center
@@ -150,9 +170,15 @@ a
                         width: .8rem
                         margin-right: .3rem
 
+                        @media screen and ( min-width: $md )
+                            width: 1.1rem
+                            margin-right: .5rem
+
                     .primaryIconText
                         font-size: .8rem
                 
+                        @media screen and ( min-width: $md )
+                            font-size: 1.2rem
 
         .avatarBox
             width: 35%
@@ -179,31 +205,67 @@ a
                 color: $darkGrey
                 font-size: 2rem
                 font-weight: 500
+                
+                @media screen and ( min-width: $md )
+                 font-size: 3.1rem
 
         .reposGrid
             width: 100%
-            // display:
+            display: grid
+            grid-template-columns: repeat( 1, 1fr )
+            grid-column-gap: 2vw
+            grid-row-gap: 2vh
+
+            @media screen and ( min-width: $sm )
+                grid-template-columns: repeat( 2, 1fr )
+
+            @media screen and ( min-width: $md )
+                grid-template-columns: repeat( 3, 1fr )
+                
 
             .repoCard
-                padding: 1.2rem 1rem
+                padding: .8rem 1rem
                 background-color: $purpleLight
                 border-radius: 10px
                 box-shadow: $boxShadow
+                margin-bottom: .7rem
+
+                @media screen and ( min-width: $md )
+                    padding: 2.3rem 2.8rem
 
                 .repoName
-                    font-size: 1.8rem
+                    font-size: 1.1rem
                     color: $purpleDark
+
+                    @media screen and ( min-width: $sm  )
+                     font-size: 1.8rem
+
+                    @media screen and ( min-width: $md )
+                      font-size: 2.1rem
 
                 .repoShortDesc
                     font-size: .8rem
-                    font-weight: bold
+                    font-weight: 600
                     color: $purpleDark
+                    // color: $darkGrey
+
+                    @media screen and ( min-width: $sm  )
+                     font-size: .9rem
+
+                    @media screen and ( min-width: $md )
+                     font-size: 1.1rem
                         
 
                 .repoDescription
-                    margin-top: 0.7rem
-                    font-size: 0.8rem
+                    margin-top: 0.3rem
+                    font-size: 0.7rem
                     color: $darkGrey
+
+                    @media screen and ( min-width: $sm  )
+                     font-size: .8rem
+
+                    @media screen and ( min-width: $md )
+                     font-size: 0.9rem
 
 
 
@@ -214,14 +276,22 @@ a
     .languages
         width: 100%
         display: flex
+        flex-direction: column
         justify-content: space-between
         align-items: baseline
+        margin: 5vw auto
 
         .languagesTitle
             margin-bottom: 1rem
             color: $darkGrey
             font-size: 2rem
             font-weight: 500
+
+            @media screen and ( min-width: $md )
+             font-size: 3.1rem
+
+        .languagesChart
+            width: 100%
           
 
     .knowMe
@@ -233,12 +303,15 @@ a
         
         
         .knowMeTitle
-            margin-bottom: 1rem
+            margin: 1rem 0
             color: $darkGrey
             font-size: 2rem
             font-weight: 500
             display: flex
             justify-content: center
+
+            @media screen and ( min-width: $md )
+                 font-size: 3.1rem
             
         
         .iconSet
@@ -247,7 +320,12 @@ a
             align-items: center
             justify-content: space-between  
             width: 82%
-             
+            // background: tomato
+            margin: 2rem auto
+
+            @media screen and ( min-width: $md )
+                width: 60%
+            
             & > div
                 display: flex
 
@@ -255,6 +333,11 @@ a
                      
                     width: 2.3rem 
                     height: 2.3rem
+                    cursor: pointer
+
+                    @media screen and ( min-width: $md )
+                        width: 3.5rem
+                        height: 3.5rem
             
             & > span
                 display: none
@@ -263,18 +346,39 @@ a
 // quote section
 
 .quote
-    margin-top: 1rem
+    margin: 5vh 0
     width: 100%
-    height: 100%
+    // height: 100%
     display: flex
+    flex-direction: column
     align-items: center
     justify-content: center
-    margin-bottom: 1rem
 
     .goodQuote
-        font-size: 1rem
+        font-size: 6vw
         color: $darkGrey
+        opacity: 0.6
         text-align: center
+
+        @media screen and ( min-width: $md )
+          font-size: 3vw
+
+        @media screen and ( min-width: $sm  )
+         font-size: 4vw
+            
+
+    .author
+        margin-top: 2vh
+        font-size: 4vw
+        color: $darkGrey
+        opacity: 0.5
+
+        @media screen and ( min-width: $sm  )
+            font-size: 3vw
+         
+        @media screen and ( min-width: $md )
+            font-size: 2vw
+            margin-top: 1rem
 
 footer
     position: relative

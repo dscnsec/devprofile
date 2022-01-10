@@ -81,7 +81,35 @@ const editProfile = async (req, res) => {
     //     })
 }
 
+const findProfile = (req, res) => {
+    const { id } = req.params
+
+    Profile
+        .findOne({ id })
+        .then(user => {
+            
+            let bodyToSend = {}
+
+            if (user) {
+                console.log(user)
+                bodyToSend.data = user._doc
+                bodyToSend.found = true
+
+                
+
+            } else {
+                bodyToSend.found = false
+            }
+            return res.send(bodyToSend)
+        })
+        .catch(err => {
+            res.status(400).send('Something went wrong')
+            logger.error(err)
+        })
+}
+
 module.exports = {
     createProfile,
-    editProfile
+    editProfile,
+    findProfile
 }
