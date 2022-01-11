@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react'
 // import Skeleton from '@components/Skeleton'
 import Skeleton from '../components/Skeleton'
 import classes from '../styles/Dashboard.module.sass'
+import LanguageDistributionChart from '../components/LanguageDistributionChart'
 
 const Dashboard = () => {
 
     const [dataLoaded, setDataLoaded] = useState(false)
 
-    useEffect(async () => {
+    useEffect(() => {
 
-        await fetch('https://jsonplaceholder.typicode.com/todos/1')
+        const fetchData = async () => {
+            await fetch('https://jsonplaceholder.typicode.com/todos/1')
             .then(res => res.json())
             .then(data => {
                 setTimeout(() => {
@@ -18,7 +20,10 @@ const Dashboard = () => {
                 console.log(data)
             })
             .catch(err => console.log(err))
+        }
 
+        fetchData()
+        
     }, [])
 
     return (
@@ -51,7 +56,7 @@ const Dashboard = () => {
                                         <img src="/icons/redirection.svg" alt="redirection" className={classes.redirectionIcon} />
                                     </div>
                                     <h1 className={classes.bio}>
-                                        lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quasi deserunt nemo ab tenetur atque, a labore assumenda, corporis veritatis id, obcaecati aspernatur ea sequi nam et facilis consequuntur non.
+                                        lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quasi deserunt nemo ab tenetur atque.
                                     </h1>
                                     <div className={classes.primaryIcons}>
                                         <div className={classes.primaryIconBox}>
@@ -88,13 +93,34 @@ const Dashboard = () => {
                                     <div className={classes.repoCard}>
                                         <h1 className={classes.repoName}>Pickup Line Gen</h1>
                                         <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
-                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit mollitia eum ipsam voluptatum, nam, reprehenderit neque distinctio quasi. Illo, necessitatibus reiciendis.</p>
+                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
                                     </div>
-                                    {/* <div className={classes.repoCard}>
-                                        <h1>Pickup Line Gen</h1>
-                                        <p>Generates pickup lines to help improve your pathetic life</p>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit mollitia eum ipsam voluptatum, nam, reprehenderit neque distinctio quasi. Illo, necessitatibus reiciendis.</p>
-                                    </div> */}
+                                    <div className={classes.repoCard}>
+                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
+                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
+                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
+                                    </div>
+                                    <div className={classes.repoCard}>
+                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
+                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
+                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
+                                    </div>
+                                    <div className={classes.repoCard}>
+                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
+                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
+                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
+                                    </div>
+                                    <div className={classes.repoCard}>
+                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
+                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
+                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
+                                    </div>
+                                    <div className={classes.repoCard}>
+                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
+                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
+                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
+                                    </div>
+        
                                 </div>
 
                             </section>
@@ -103,6 +129,9 @@ const Dashboard = () => {
                             <section className={classes.languages}>
                                 <div className={classes.languagesTitle}> 
                                     languages
+                                </div>
+                                <div className={classes.languagesChart}>
+                                    <LanguageDistributionChart />
                                 </div>
                             </section>
 
@@ -159,6 +188,9 @@ const Dashboard = () => {
                             <section className={classes.quote}>
                             <div className={classes.goodQuote}>
                                 “good things take time... my excuse for arriving late at work“
+                            </div>
+                            <div className={classes.author}>
+                                - aditi tripathi
                             </div>
                             </section>
                             

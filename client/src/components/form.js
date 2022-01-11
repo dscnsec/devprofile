@@ -5,9 +5,11 @@ import image from "../assets/Images/5143311.png";
 import "../assets/css/form.css";
 import { Collapse } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import { useSelector} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
+import { editDetails } from '../redux/userDetailsSlice'
+
 
 const { Panel } = Collapse;
 
@@ -34,6 +36,7 @@ const FormLayoutDemo = () => {
   const [formLayout] = useState('vertical');
   const [loading, setLoading] = useState(false);
   const userDetails = useSelector(state => state.userDetails);
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const formItemLayout =
     formLayout === 'vertical'
@@ -75,6 +78,7 @@ const FormLayoutDemo = () => {
       newJson.college = values.college
       newJson.portfolio = values.portfolio
 
+      dispatch(editDetails(newJson))
 
       // send the json
       try {
