@@ -27,8 +27,8 @@ const profileSchema = new mongoose.Schema({
  // repos:                { type: [githubRepoSchema] },
     repos:                { type: [{
                                 name:           { type: String, required: true },
-                                html_url:       { type: String, required: true },
-                                description:    { type: String, required: true },
+                                html_url:       { type: String },
+                                description:    { type: String },
                                 updated_at:     { type: String },
                             }]},
 
@@ -50,8 +50,8 @@ const validate = (profile) => {
 
     const githubRepo =  Joi.object().keys({
         name:           Joi.string().required(),
-        html_url:       Joi.string().required(),
-        description:    Joi.string().required(),
+        html_url:       Joi.string(),
+        description:    Joi.string(),
         updated_at:     Joi.string(),
     })
 
