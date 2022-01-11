@@ -44,7 +44,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }, 
+  },
   "paths": {
     "@pages/*": "./src/pages/*",
     "@components/*": "./src/components/*",
