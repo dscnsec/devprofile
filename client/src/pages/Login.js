@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
-import classes from '../App.module.css';
+import classes from '../Login.module.css';
 import { signInWithGitHub as GithubSignIn } from '../utilities/auth'
 import { useSelector, useDispatch } from 'react-redux'
 import { editDetails } from '../redux/userDetailsSlice'
