@@ -3,7 +3,7 @@ require('winston-mongodb')
 const { NODE_ENV, DATABASE_CONNECTION_STRING } = require('../config/index')
 
 const initializeLogger = (DATABASE_CONNECTION_STRING) => {
-
+console.log(DATABASE_CONNECTION_STRING)
     const logger = winston.createLogger({
         level: 'info',
         format: winston.format.json(),

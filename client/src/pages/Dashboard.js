@@ -5,6 +5,7 @@ import classes from '../styles/Dashboard.module.sass'
 import {useSelector} from 'react-redux'
 import LanguageDistributionChart from '../components/LanguageDistributionChart'
 import RepoCard from '../components/RepoCard'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
 
@@ -32,6 +33,12 @@ const Dashboard = () => {
     // const calculateLanguages = () => {
         
     // }
+    const navigate = useNavigate();
+    function logout()
+    {
+        localStorage.clear();
+        navigate('/')
+    }
 
     return (
         <div className={classes.container}>
@@ -42,7 +49,7 @@ const Dashboard = () => {
                     <img src="/icons/searchIcon.svg" alt="search icon" className={classes.searchIcon} />
                     <input type="text" placeholder="search" className={classes.searchBox} />
                 </div>
-                <div className={classes.logout}>
+                <div className={classes.logout} onClick={logout}>
                     <img src="/icons/logoutIcon.svg" alt="logout icon" className={classes.logoutIcon} />
                 </div>
             </nav>
