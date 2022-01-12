@@ -20,7 +20,7 @@ const profileSchema = new mongoose.Schema({
                                 linkedin_id:     { type: String },
                                 codechef_id:     { type: String },
                                 hackerrank_id:   { type: String },
-                                leetcode_id:     {type: String},
+                                leetcode_id:     { type: String },
                                 twitter_id:      { type: String },
                                 medium_id:       { type: String },
                             }},

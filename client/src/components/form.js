@@ -73,6 +73,7 @@ const FormLayoutDemo = () => {
       newJson.externalProfileLinks.leetcode_id = values.leetcode
       newJson.externalProfileLinks.hackerrank_id = values.hackerrank
       newJson.externalProfileLinks.medium_id = values.medium
+      newJson.externalProfileLinks.github_id = `https://github.com/${newJson.id}`
 
       newJson.blog = values.blog
       newJson.college = values.college
