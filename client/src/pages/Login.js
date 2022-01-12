@@ -95,7 +95,7 @@ const Login = () => {
             welcome to devprofile
           </div>
         </div>
-        <button>
+        <button className={classes.button}>
           <img src='/images/github.png' />
           <div onClick={signInWithGitHub} className={classes.buttonText}>
             continue with github
@@ -113,7 +113,7 @@ const Login = () => {
 
           </div>
         </div>
-        <button>
+        <button className={classes.button}>
           <img src='/images/gitlab.png' />
           <div className={classes.buttonText}>
             continue with gitlab

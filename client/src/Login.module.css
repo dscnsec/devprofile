@@ -25,13 +25,10 @@
 	scroll-behavior: smooth;
 /* overflow: hidden;} */
 }
-body{
+.App{
     background-color: var(--bg);
     color: var(--text-color);
     font-family: 'Poppins', sans-serif;
-    /* overflow-y: hidden; */
-}
-.App{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -176,16 +173,16 @@ button > img{
     .textWelcome{
         font-size: 14px;
     } 
-    button{
+    .button{
         width: 220px; 
         padding: 8px 12px;
         margin-bottom: 50px;  
     }
-    button > img{
+    .button > img{
         width: 30px;
     
     }
-    button .buttonText{
+    .button .buttonText{
         font-size: 12px;
     }
     .orLine{
@@ -212,9 +209,6 @@ button > img{
  
   /* mobile */
   @media (max-width: 480px) {
-    body{
-        overflow-y: scroll;
-    }
     .App{
             display: flex;
             justify-content: center;
@@ -245,7 +239,7 @@ button > img{
     .textWelcome{
         font-size: 14px;
     } 
-    button{
+    .button{
         width: 230px; 
        margin-bottom: 35px;
        
