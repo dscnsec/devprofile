@@ -2,13 +2,16 @@ import { useState, useEffect } from 'react'
 // import Skeleton from '@components/Skeleton'
 import Skeleton from '../components/Skeleton'
 import classes from '../styles/Dashboard.module.sass'
+import {useSelector} from 'react-redux'
 import LanguageDistributionChart from '../components/LanguageDistributionChart'
+import RepoCard from '../components/RepoCard'
 
 const Dashboard = () => {
 
     const [dataLoaded, setDataLoaded] = useState(false)
 
-    useEffect(() => {
+    const userDetails = useSelector(state => state.userDetails)
+    useEffect(async () => {
 
         const fetchData = async () => {
             await fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -25,6 +28,10 @@ const Dashboard = () => {
         fetchData()
         
     }, [])
+
+    // const calculateLanguages = () => {
+        
+    // }
 
     return (
         <div className={classes.container}>
@@ -50,31 +57,35 @@ const Dashboard = () => {
                             {/* section 1 */}
                             <section className={classes.introduction}>
                                 <div className={classes.text}>
-                                    <h1 className={classes.name}>aditi tripathi</h1>
+                                    <h1 className={classes.name}>{userDetails.name}</h1>
                                     <div className={classes.devName}>
-                                            <h1>hermione granger</h1>
-                                        <img src="/icons/redirection.svg" alt="redirection" className={classes.redirectionIcon} />
+                                            <h1>{userDetails.id}</h1>
+                                        <a href={`https://github.com/${userDetails.id}`}> 
+                                            <img src="/icons/redirection.svg" alt="redirection" className={classes.redirectionIcon} />
+                                        </a>
                                     </div>
                                     <h1 className={classes.bio}>
-                                        lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quasi deserunt nemo ab tenetur atque.
+                                        {userDetails.bio}
                                     </h1>
                                     <div className={classes.primaryIcons}>
                                         <div className={classes.primaryIconBox}>
-                                            <img src="/icons/location.svg" alt="location" className={classes.primaryIcon} />
-                                            <div className={classes.primaryIconText} >satna, MP</div>
+                                            <img href="" src="/icons/location.svg" alt="location" className={classes.primaryIcon} />
+                                            <div className={classes.primaryIconText}>{userDetails.location}</div>
                                         </div>
                                         <div className={classes.primaryIconBox}>
-                                            <img src="/icons/blog.svg" alt="blog" className={classes.primaryIcon} />
-                                            <div className={classes.primaryIconText} >blog</div>
+                                            <img href="" src="/icons/blog.svg" alt="blog" className={classes.primaryIcon} />
+                                            <div className={classes.primaryIconText}><a href={userDetails.blog}>blog</a></div>
                                         </div>
-                                        <div className={classes.primaryIconBox}>
-                                            <img src="/icons/mail.svg" alt="mail" className={classes.primaryIcon} />
-                                            <div className={classes.primaryIconText} >mail</div>
-                                        </div>
+                                        {userDetails.email && (<div className={classes.primaryIconBox}>
+                                            <img href={userDetails.email} src="/icons/mail.svg" alt="mail" className={classes.primaryIcon} />
+                                            <div className={classes.primaryIconText}><a href={`mailto:${userDetails.email}`}>email</a></div>
+                                        </div>)}
                                     </div>
                                 </div>
                                 <div className={classes.avatarBox}>
-                                    <img src="/images/avatar.jpg" alt="Avatar" className={classes.avatar} />
+                                    
+                                    <img  src={userDetails.avatar_url} alt="Avatar" className={classes.avatar} />
+                                    
                                 </div>
                             </section>
 
@@ -86,41 +97,20 @@ const Dashboard = () => {
                                     repos
                                     </div>
                                     <div className={classes.seeAll}>
-                                        see all
+                                        <a  href={`https://github.com/${userDetails.id}?tab=repositories`}>see all</a>
                                     </div>
                                 </div>
                                 <div className={classes.reposGrid}>
-                                    <div className={classes.repoCard}>
-                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
-                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
-                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
-                                    </div>
-                                    <div className={classes.repoCard}>
-                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
-                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
-                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
-                                    </div>
-                                    <div className={classes.repoCard}>
-                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
-                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
-                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
-                                    </div>
-                                    <div className={classes.repoCard}>
-                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
-                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
-                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
-                                    </div>
-                                    <div className={classes.repoCard}>
-                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
-                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
-                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
-                                    </div>
-                                    <div className={classes.repoCard}>
-                                        <h1 className={classes.repoName}>Pickup Line Gen</h1>
-                                        <p className={classes.repoShortDesc}>Generates pickup lines to help improve your pathetic life</p>
-                                        <p className={classes.repoDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nesciunt a! Tempora dignissimos quae necessitatibus, id est suscipit molli.</p>
-                                    </div>
-        
+
+                                    {
+                                        
+                                        userDetails.repos && userDetails.repos.slice(0,6).map(
+                                            (repo) => {
+                                                return <RepoCard repo={repo} />
+                                            }
+                                        )
+                                    }
+                                
                                 </div>
 
                             </section>
@@ -142,46 +132,40 @@ const Dashboard = () => {
                                 </div>
                                 <div className={classes.iconSet}>
                                     <div className={classes.github}>
-                                        <img src="/icons/github.svg" alt="Github" />
+                                        <a href={userDetails.externalProfileLinks.github_id}>
+                                            <img src="/icons/github.svg" alt="Github" />
+                                        </a>
                                     </div>
-                                    <span>
-                                        github
-                                    </span>
                                     {/* codechef */}
                                     <div className={classes.codechef}>
-                                        <img src="/icons/codechef.svg" alt="codechef" />
+                                        <a href={userDetails.externalProfileLinks.codechef_id}>
+                                            <img src="/icons/codechef.svg" alt="codechef" />
+                                        </a>
                                     </div>
-                                    <span>
-                                    codechef
-                                    </span>
                                     {/* linkedin */}
                                     <div className={classes.linkedin}>
-                                        <img src="/icons/linkedin.svg" alt="linkedin" />
+                                        <a href={userDetails.externalProfileLinks.linkedin_id}>
+                                            <img src="/icons/linkedin.svg" alt="linkedin" />
+                                        </a>
                                     </div>
-                                    <span>
-                                    linkedin
-                                    </span>
                                     {/* medium */}
                                     <div className={classes.medium}>
-                                        <img src="/icons/medium.svg" alt="medium" />
+                                        <a href={userDetails.externalProfileLinks.medium_id}>
+                                            <img src="/icons/medium.svg" alt="medium" />
+                                        </a>
                                     </div>
-                                    <span>
-                                    medium
-                                    </span>
                                     {/* twitter */}
                                     <div className={classes.twitter}>
-                                        <img src="/icons/twitter.svg" alt="twitter" />
+                                        <a href={userDetails.externalProfileLinks.twitter_id}>
+                                            <img src="/icons/twitter.svg" alt="twitter" />
+                                        </a>
                                     </div>
-                                    <span>
-                                    twitter
-                                    </span>
                                     {/* codeforces */}
                                     <div className={classes.codeforces}>
+                                        <a href={userDetails.externalProfileLinks.codeforces_id}>
                                         <img src="/icons/codeforces.svg" alt="codeforces" />
+                                        </a>
                                     </div>
-                                    <span>
-                                    codeforces
-                                    </span>
 
                                 </div>
                             </section>
@@ -190,7 +174,7 @@ const Dashboard = () => {
                                 “good things take time... my excuse for arriving late at work“
                             </div>
                             <div className={classes.author}>
-                                - aditi tripathi
+                                - {userDetails.name}
                             </div>
                             </section>
                             
