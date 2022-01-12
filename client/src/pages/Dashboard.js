@@ -2,27 +2,33 @@ import { useState, useEffect } from 'react'
 // import Skeleton from '@components/Skeleton'
 import Skeleton from '../components/Skeleton'
 import classes from '../styles/Dashboard.module.sass'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import LanguageDistributionChart from '../components/LanguageDistributionChart'
 import RepoCard from '../components/RepoCard'
+import { editDetails } from '../redux/userDetailsSlice'
+import axios from 'axios'
 
 const Dashboard = () => {
 
     const [dataLoaded, setDataLoaded] = useState(false)
-
+    const dispatch = useDispatch()
     const userDetails = useSelector(state => state.userDetails)
+    const devprofile_id = localStorage.getItem('devprofile_id')
+
     useEffect(async () => {
 
         const fetchData = async () => {
-            await fetch('https://jsonplaceholder.typicode.com/todos/1')
-            .then(res => res.json())
-            .then(data => {
-                setTimeout(() => {
-                    setDataLoaded(true)
-                }, 3000)
-                console.log(data)
-            })
-            .catch(err => console.log(err))
+
+            const { data: userInDB } = await axios.get(`http://localhost:8000/api/profile/find/${devprofile_id}`)
+  
+            if(userInDB.found === true) {
+                
+                dispatch(editDetails(userInDB.data))
+                setDataLoaded(true)
+
+            } else {
+                console.log('user not found')
+            }
         }
 
         fetchData()
@@ -60,7 +66,7 @@ const Dashboard = () => {
                                     <h1 className={classes.name}>{userDetails.name}</h1>
                                     <div className={classes.devName}>
                                             <h1>{userDetails.id}</h1>
-                                        <a href={`https://github.com/${userDetails.id}`}> 
+                                        <a target="_blank" href={`https://github.com/${userDetails.id}`}> 
                                             <img src="/icons/redirection.svg" alt="redirection" className={classes.redirectionIcon} />
                                         </a>
                                     </div>
@@ -74,11 +80,11 @@ const Dashboard = () => {
                                         </div>
                                         <div className={classes.primaryIconBox}>
                                             <img href="" src="/icons/blog.svg" alt="blog" className={classes.primaryIcon} />
-                                            <div className={classes.primaryIconText}><a href={userDetails.blog}>blog</a></div>
+                                            <div className={classes.primaryIconText}><a target="_blank" href={userDetails.blog}>blog</a></div>
                                         </div>
                                         {userDetails.email && (<div className={classes.primaryIconBox}>
                                             <img href={userDetails.email} src="/icons/mail.svg" alt="mail" className={classes.primaryIcon} />
-                                            <div className={classes.primaryIconText}><a href={`mailto:${userDetails.email}`}>email</a></div>
+                                            <div className={classes.primaryIconText}><a target="_blank" href={`mailto:${userDetails.email}`}>email</a></div>
                                         </div>)}
                                     </div>
                                 </div>
@@ -97,7 +103,7 @@ const Dashboard = () => {
                                     repos
                                     </div>
                                     <div className={classes.seeAll}>
-                                        <a  href={`https://github.com/${userDetails.id}?tab=repositories`}>see all</a>
+                                        <a target="_blank"  href={`https://github.com/${userDetails.id}?tab=repositories`}>see all</a>
                                     </div>
                                 </div>
                                 <div className={classes.reposGrid}>
@@ -132,37 +138,37 @@ const Dashboard = () => {
                                 </div>
                                 <div className={classes.iconSet}>
                                     <div className={classes.github}>
-                                        <a href={userDetails.externalProfileLinks.github_id}>
+                                        <a target="_blank" href={userDetails.externalProfileLinks.github_id}>
                                             <img src="/icons/github.svg" alt="Github" />
                                         </a>
                                     </div>
                                     {/* codechef */}
                                     <div className={classes.codechef}>
-                                        <a href={userDetails.externalProfileLinks.codechef_id}>
+                                        <a target="_blank" href={userDetails.externalProfileLinks.codechef_id}>
                                             <img src="/icons/codechef.svg" alt="codechef" />
                                         </a>
                                     </div>
                                     {/* linkedin */}
                                     <div className={classes.linkedin}>
-                                        <a href={userDetails.externalProfileLinks.linkedin_id}>
+                                        <a target="_blank" href={userDetails.externalProfileLinks.linkedin_id}>
                                             <img src="/icons/linkedin.svg" alt="linkedin" />
                                         </a>
                                     </div>
                                     {/* medium */}
                                     <div className={classes.medium}>
-                                        <a href={userDetails.externalProfileLinks.medium_id}>
+                                        <a target="_blank" href={userDetails.externalProfileLinks.medium_id}>
                                             <img src="/icons/medium.svg" alt="medium" />
                                         </a>
                                     </div>
                                     {/* twitter */}
                                     <div className={classes.twitter}>
-                                        <a href={userDetails.externalProfileLinks.twitter_id}>
+                                        <a target="_blank" href={userDetails.externalProfileLinks.twitter_id}>
                                             <img src="/icons/twitter.svg" alt="twitter" />
                                         </a>
                                     </div>
                                     {/* codeforces */}
                                     <div className={classes.codeforces}>
-                                        <a href={userDetails.externalProfileLinks.codeforces_id}>
+                                        <a target="_blank" href={userDetails.externalProfileLinks.codeforces_id}>
                                         <img src="/icons/codeforces.svg" alt="codeforces" />
                                         </a>
                                     </div>

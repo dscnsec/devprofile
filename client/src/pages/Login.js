@@ -15,11 +15,13 @@ const Login = () => {
   
   const onSuccessfulLogin = async (accessToken) => {
 
-      // octokit initialization with access key
-      const octokit = new Octokit({ auth: accessToken})
-        
-      // user details from github
-      const { data } = await octokit.rest.users.getAuthenticated();
+    
+    // octokit initialization with access key
+    const octokit = new Octokit({ auth: accessToken})
+    
+    // user details from github
+    const { data } = await octokit.rest.users.getAuthenticated();
+    localStorage.setItem('devprofile_id', data.login)
 
       const { data: userInDB } = await axios.get(`http://localhost:8000/api/profile/find/${data.login}`)
   
