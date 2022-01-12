@@ -1,5 +1,6 @@
 const { Profile, validate } = require('../../models/profile')
 const logger = require('../../initialization/logging')
+const { Octokit, App } = require('octokit')
 
 const createProfile = async (req, res, next) => {
 console.log(req.body)
@@ -47,40 +48,81 @@ console.log(req.body)
     
 }
 
-const editProfile = async (req, res) => {
+const editProfile = async (req, res, next) => {
     console.log(`editing profile`)
+
+    const providedID = req.params.id
     
-    // TODO: check if the user is the owner of the profile sent in the request
-
-    // TODO: validate the profile sent in the request
-    // const { error } = validate(req.body)
-    // if (error) return res.status(400).send(error.details[0].message)
+    let login
     
-    // TODO: make the updated values object
-    const editedValues = {}
+    try {
+        const accessToken = req.headers['access-token']
+        const octokit = new Octokit({ auth: accessToken})
 
-    console.log(req.params.id)
+        const { data: { login: username } } = await octokit.rest.users.getAuthenticated()
+        login = username
+        delete ocktokit
 
-    for (key in req.body) {
-
-        if (key === 'externalProfileLinks') {
-            console.log(key, '-->')
-            console.log(req.body[key], '<--')
-
-            // for (x of req.body[key]) {
-            //     console.log('0-0---',x)
-            // }
-
-        } else {
-            console.log(key, req.body[key])
-        }
+    } catch(ex) {
+        res.status(400).send('Invalid access token. Make sure you are signed in')
+    }
+    
+    if(!providedID) {
+        return res.status(400).send(`No ID Provided`)
+    }
+    
+    if(providedID !== login) {
+        return res.status(400).send(`Invalid ID: You are not permitted to edit somebody else's profile`)
     }
 
-    // TODO: update the profile in the DB
+
+    console.log(`recieved update request from ${login}`)
+    console.log(req.body)
+
     // Profile
-    //     .findByIdAndUpdate(req.params.id, {
-    //         ...editedValues
-    //     })
+    //     .findOneAndUpdate(
+    //         { id: login },
+    //         { $set: req.body },
+    //     ).then(
+    //             profile => {
+    //                 if (profile) {
+    //                     res.send(profile)
+    //                 } else {
+    //                     res.status(400).send('Profile not found')
+    //                 }
+    //             } 
+    //         )
+    //         .catch(err => next(err))
+
+    const profile = await Profile.findOne({ id: login })
+
+    for(const [field, value] of Object.entries(req.body)) {
+        // console.log(`property: ${field}`)
+        // console.log(`value: ${value}`)
+
+        if(field === 'externalProfileLinks') {
+            
+            for(const [externalProfileName, externalProfileLink] of Object.entries(value)) {
+                // console.log(`externalProfileName: ${externalProfileName}`)
+                // console.log(`externalProfileLink: ${externalProfileLink}`)
+
+                profile[field][externalProfileName] = externalProfileLink
+            }
+
+
+        } else if (field === 'repos') {
+            return res.status(400).send('Cannot edit repos')
+        } else {
+            profile[field] = value
+        }
+
+    }
+
+    await profile.save()
+
+    return res.send(profile)
+
+
 }
 
 const findProfile = (req, res) => {
