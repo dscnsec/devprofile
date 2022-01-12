@@ -7,6 +7,7 @@ import LanguageDistributionChart from '../components/LanguageDistributionChart'
 import RepoCard from '../components/RepoCard'
 import { editDetails } from '../redux/userDetailsSlice'
 import axios from 'axios'
+import randomer from 'complete-randomer'
 
 const Dashboard = () => {
 
@@ -14,6 +15,8 @@ const Dashboard = () => {
     const dispatch = useDispatch()
     const userDetails = useSelector(state => state.userDetails)
     const devprofile_id = localStorage.getItem('devprofile_id')
+    const randomQuote = randomer.QUOTES.SINGLE()
+    // console.log(randomQuote)
 
     useEffect(async () => {
 
@@ -177,10 +180,10 @@ const Dashboard = () => {
                             </section>
                             <section className={classes.quote}>
                             <div className={classes.goodQuote}>
-                                “good things take time... my excuse for arriving late at work“
+                                {randomQuote.text}
                             </div>
                             <div className={classes.author}>
-                                - {userDetails.name}
+                                {randomQuote.author}
                             </div>
                             </section>
                             

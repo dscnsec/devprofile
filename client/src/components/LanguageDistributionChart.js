@@ -1,6 +1,7 @@
 import { Bar } from 'react-chartjs-2'
 import { Chart as ChartJS, LineController, LineElement, PointElement, LinearScale, Title, BarElement, CategoryScale } from 'chart.js'
-import randomColor from 'randomcolor'
+// import randomColor from 'randomcolor'
+import randomer from 'complete-randomer'
 
 ChartJS.register(LineController, LineElement, PointElement, LinearScale, Title, BarElement, CategoryScale)
 
@@ -23,7 +24,8 @@ const genRandColors = (labels) => {
         //     borderColors.push(randomColor())
         // }
         
-        const randClr = randomColor()
+        // const randClr = randomColor()
+        const randClr = randomer.COLOR.HEX()
 
         bgColors.push(randClr + '99')
         borderColors.push(randClr)
