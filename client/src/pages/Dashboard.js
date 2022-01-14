@@ -58,7 +58,7 @@ const Dashboard = () => {
                     <img src="/icons/searchIcon.svg" alt="search icon" className={classes.searchIcon} />
                     <input type="text" placeholder="search" className={classes.searchBox} />
                 </div>
-                <div className={classes.logout}>
+                <div className={classes.logout} onClick={logout}>
                     <img src="/icons/logoutIcon.svg" alt="logout icon" className={classes.logoutIcon} />
                 </div>
             </nav>
