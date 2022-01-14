@@ -15,11 +15,13 @@ const Login = () => {
   
   const onSuccessfulLogin = async (accessToken) => {
 
-      // octokit initialization with access key
-      const octokit = new Octokit({ auth: accessToken})
-        
-      // user details from github
-      const { data } = await octokit.rest.users.getAuthenticated();
+    
+    // octokit initialization with access key
+    const octokit = new Octokit({ auth: accessToken})
+    
+    // user details from github
+    const { data } = await octokit.rest.users.getAuthenticated();
+    localStorage.setItem('devprofile_id', data.login)
 
       const { data: userInDB } = await axios.get(`http://localhost:8000/api/profile/find/${data.login}`)
   
@@ -93,7 +95,7 @@ const Login = () => {
             welcome to devprofile
           </div>
         </div>
-        <button>
+        <button className={classes.button}>
           <img src='/images/github.png' />
           <div onClick={signInWithGitHub} className={classes.buttonText}>
             continue with github
@@ -111,7 +113,7 @@ const Login = () => {
 
           </div>
         </div>
-        <button>
+        <button className={classes.button}>
           <img src='/images/gitlab.png' />
           <div className={classes.buttonText}>
             continue with gitlab
