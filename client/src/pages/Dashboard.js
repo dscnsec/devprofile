@@ -8,6 +8,7 @@ import RepoCard from '../components/RepoCard'
 import { editDetails } from '../redux/userDetailsSlice'
 import axios from 'axios'
 import randomer from 'complete-randomer'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
 
@@ -41,6 +42,12 @@ const Dashboard = () => {
     // const calculateLanguages = () => {
         
     // }
+    const navigate = useNavigate();
+    function logout()
+    {
+        localStorage.clear();
+        navigate('/')
+    }
 
     return (
         <div className={classes.container}>
